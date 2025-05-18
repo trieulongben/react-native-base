@@ -1,0 +1,76 @@
+name: iOS Deploy
+
+on:
+  workflow_call:
+    inputs:
+      changelog:
+        required: true
+        type: string
+        description: "app changelog"
+      groups:
+        required: false
+        type: string
+        description: "groups to distribute to"
+        default: ""
+    secrets:
+      APPSTORE_API_KEY_ID:
+        required: true
+      APPSTORE_ISSUER_ID:
+        required: true
+      APPSTORE_API_PRIVATE_KEY:
+        required: true
+
+jobs:
+  ios-deploy:
+    runs-on: self-hosted
+    timeout-minutes: 30
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: .
+
+      - name: Setup Ruby (bundle)
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+          bundler-cache: true
+
+      - name: Install bundles
+        run: bundle install
+
+      - name: Download IPA file
+        uses: actions/download-artifact@v4
+        with:
+          name: build
+
+      - name: Create AppStore key JSON file
+        run: |
+          jq -n \
+            --arg key_id "${{ secrets.APPSTORE_API_KEY_ID }}" \
+            --arg issuer_id "${{ secrets.APPSTORE_ISSUER_ID }}" \
+            --arg key "${{ secrets.APPSTORE_API_PRIVATE_KEY }}" \
+            '{
+              key_id: $key_id,
+              issuer_id: $issuer_id,
+              key: $key
+            }' > output.json
+
+      - name: Upload to TestFlight
+        env:
+          CHANGELOG: ${{ inputs.changelog }}
+          GROUPS: ${{ inputs.groups }}
+        run: |
+          if [[ -z $GROUPS ]]; then
+            bundle exec fastlane pilot upload --api_key_path 'output.json' \
+              --ipa 'output.ipa' \
+              --changelog "$CHANGELOG" \
+              --skip_waiting_for_build_processing true \
+              --submit_beta_review false
+          else 
+            bundle exec fastlane pilot upload --api_key_path 'output.json' --ipa 'output.ipa' \
+              --changelog "$CHANGELOG" \
+              --skip_waiting_for_build_processing false \
+              --submit_beta_review false \
+              --groups "$GROUPS"
+          fi

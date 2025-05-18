@@ -1,0 +1,249 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/BeVietnamPro-Light.ttf",
+      "sha1": "4c7d4497bc6b506d9fefdc8227418bbb637bc524"
+    },
+    {
+      "path": "assets/fonts/BeVietnamPro-LightItalic.ttf",
+      "sha1": "e6985b646a67ed2885e15c3f5b23dab28246621b"
+    },
+    {
+      "path": "assets/fonts/BeVietnamPro-Medium.ttf",
+      "sha1": "7525dd63d853386f3c192fa78502e547ea620e96"
+    },
+    {
+      "path": "assets/fonts/BeVietnamPro-MediumItalic.ttf",
+      "sha1": "b1d0a7a04e0b02414e50a69d8c7c952e42abea20"
+    },
+    {
+      "path": "assets/fonts/BeVietnamPro-SemiBold.ttf",
+      "sha1": "1b8668d1e0f6949d9a702c2a590971ab7946a79f"
+    },
+    {
+      "path": "assets/fonts/BeVietnamPro-SemiBoldItalic.ttf",
+      "sha1": "6d432d0456dfc9f59a091444b5aae82f35c3df2d"
+    },
+    {
+      "path": "assets/fonts/Inter-Black.ttf",
+      "sha1": "4dbdd9baf9a7049838cc0e472e0136c4f310cc78"
+    },
+    {
+      "path": "assets/fonts/Inter-BlackItalic.ttf",
+      "sha1": "1d5eae80ec55b454fad2bc00e3190e006ebbdb9f"
+    },
+    {
+      "path": "assets/fonts/Inter-Bold.ttf",
+      "sha1": "518a0361a245a66b49bc24ae0137f38328197bdc"
+    },
+    {
+      "path": "assets/fonts/Inter-BoldItalic.ttf",
+      "sha1": "3be7a4fdd0a2901f4607cb5d5914086cd87c3421"
+    },
+    {
+      "path": "assets/fonts/Inter-ExtraBold.ttf",
+      "sha1": "d01b4a9a01dfdb6d9a5c6ec153d528d70706d885"
+    },
+    {
+      "path": "assets/fonts/Inter-ExtraBoldItalic.ttf",
+      "sha1": "a447ce4b78aca02c2183a6a765f5e199bf205660"
+    },
+    {
+      "path": "assets/fonts/Inter-ExtraLight.ttf",
+      "sha1": "42e4cb6caa0b9fb529bf640645a9bc29284d79b2"
+    },
+    {
+      "path": "assets/fonts/Inter-ExtraLightItalic.ttf",
+      "sha1": "61072f48214e0f0959dc5356a39559e6ab4f3a64"
+    },
+    {
+      "path": "assets/fonts/Inter-Italic.ttf",
+      "sha1": "ec36f0b6431e16cae9c11f93832eae6dbad40b4a"
+    },
+    {
+      "path": "assets/fonts/Inter-Light.ttf",
+      "sha1": "6b041e6fc61656b930d8ef638a0b9d6a0ac8e084"
+    },
+    {
+      "path": "assets/fonts/Inter-LightItalic.ttf",
+      "sha1": "c896e4309f43e88093e058a6b822692d43120a18"
+    },
+    {
+      "path": "assets/fonts/Inter-Medium.ttf",
+      "sha1": "e2d21cdc9730ce4d4bdccb3476413a5b79fe7d52"
+    },
+    {
+      "path": "assets/fonts/Inter-MediumItalic.ttf",
+      "sha1": "be7237b6cdcd5738007a1fb702309e23bdfd7125"
+    },
+    {
+      "path": "assets/fonts/Inter-Regular.ttf",
+      "sha1": "bd1976c1f019853ab6143ef1246e25aa66fd990e"
+    },
+    {
+      "path": "assets/fonts/Inter-SemiBold.ttf",
+      "sha1": "f3e44abd6661d5b861e66db22f4f79a6c466cd00"
+    },
+    {
+      "path": "assets/fonts/Inter-SemiBoldItalic.ttf",
+      "sha1": "6b5eb26c850c647aaab42e7e299e23108416ca32"
+    },
+    {
+      "path": "assets/fonts/Inter-Thin.ttf",
+      "sha1": "4f2b3c3c97e618166627b4d3fff9322fa5198e81"
+    },
+    {
+      "path": "assets/fonts/Inter-ThinItalic.ttf",
+      "sha1": "2215c5b4224e0f646b85bbc0a684c9844d8c8c82"
+    },
+    {
+      "path": "assets/fonts/Lato-Black.ttf",
+      "sha1": "a001eb827743636e04f8efa7d4aeedf0541c46ac"
+    },
+    {
+      "path": "assets/fonts/Lato-BlackItalic.ttf",
+      "sha1": "b490ec02c69bb74f5b4f487c59e984891c8da71c"
+    },
+    {
+      "path": "assets/fonts/Lato-Bold.ttf",
+      "sha1": "542498221d97bee5bdbccf86ee8890bf8e8005c9"
+    },
+    {
+      "path": "assets/fonts/Lato-BoldItalic.ttf",
+      "sha1": "6bf491e78e16d3b9c8a55752e1bd658e15ed7f19"
+    },
+    {
+      "path": "assets/fonts/Lato-Italic.ttf",
+      "sha1": "190187b720ec2f2ff2e4281237e301000e09673f"
+    },
+    {
+      "path": "assets/fonts/Lato-Light.ttf",
+      "sha1": "ad0d178564445a535b15d417f5b18019923d3bab"
+    },
+    {
+      "path": "assets/fonts/Lato-LightItalic.ttf",
+      "sha1": "34388d9a3b64380c9f08d424d0adaa88a0d1650a"
+    },
+    {
+      "path": "assets/fonts/Lato-Regular.ttf",
+      "sha1": "e923c72eda5e50a87e18ff5c71e9ef4b3b6455a3"
+    },
+    {
+      "path": "assets/fonts/Lato-Thin.ttf",
+      "sha1": "07290446bee3f81ce501a3c3dbfde6097c70ca15"
+    },
+    {
+      "path": "assets/fonts/Lato-ThinItalic.ttf",
+      "sha1": "ff4a1a9fe2dcc41d993f4c5067a3baa1c456ff97"
+    },
+    {
+      "path": "assets/fonts/Poppins-Black.ttf",
+      "sha1": "645e04c53c6b5b35bce654a811ebce16af8aa721"
+    },
+    {
+      "path": "assets/fonts/Poppins-BlackItalic.ttf",
+      "sha1": "be4ef2aac7775a4b0179c0ecfce6cea8f7783f63"
+    },
+    {
+      "path": "assets/fonts/Poppins-Bold.ttf",
+      "sha1": "875cf0cecd647bcf22e79d633d868c1b1ec98dfa"
+    },
+    {
+      "path": "assets/fonts/Poppins-BoldItalic.ttf",
+      "sha1": "6de8952ca08d27ee77f57347d2cef4b4e26aa78f"
+    },
+    {
+      "path": "assets/fonts/Poppins-ExtraBold.ttf",
+      "sha1": "4b5c0750f073abd576413a0898d3b95adaf199c8"
+    },
+    {
+      "path": "assets/fonts/Poppins-ExtraBoldItalic.ttf",
+      "sha1": "94d3ee3acdbd00e37a715a25f2b5237666b5b8a3"
+    },
+    {
+      "path": "assets/fonts/Poppins-ExtraLight.ttf",
+      "sha1": "85af6582a7e6155917c605f9d3fed68c02b23b06"
+    },
+    {
+      "path": "assets/fonts/Poppins-ExtraLightItalic.ttf",
+      "sha1": "6fa0418f91032680d2d8fe4843009f2c80faa61d"
+    },
+    {
+      "path": "assets/fonts/Poppins-Italic.ttf",
+      "sha1": "e2bfcd56016c3c915221ef1c5fc1a17b0776eb91"
+    },
+    {
+      "path": "assets/fonts/Poppins-Light.ttf",
+      "sha1": "e247a92158e112f8bf7b638c8d95381d66b00dbb"
+    },
+    {
+      "path": "assets/fonts/Poppins-LightItalic.ttf",
+      "sha1": "f76102b361e705751a83b7b22fe954daf1f27dd4"
+    },
+    {
+      "path": "assets/fonts/Poppins-Medium.ttf",
+      "sha1": "283f21b44efbdbf276ba802be2d949a36bbc4233"
+    },
+    {
+      "path": "assets/fonts/Poppins-MediumItalic.ttf",
+      "sha1": "b592c62fdf88c40cfd0f031bba6423b1d4430472"
+    },
+    {
+      "path": "assets/fonts/Poppins-Regular.ttf",
+      "sha1": "fdd3002e7d814ee47c1c1b8487c72c6bbb3a2d00"
+    },
+    {
+      "path": "assets/fonts/Poppins-SemiBold.ttf",
+      "sha1": "8a4ace9392d06bcb7f8ea2f5169b07e4c383a90d"
+    },
+    {
+      "path": "assets/fonts/Poppins-SemiBoldItalic.ttf",
+      "sha1": "0c8bed0a5942b2388d36b11c115685d9f01700b0"
+    },
+    {
+      "path": "assets/fonts/Poppins-Thin.ttf",
+      "sha1": "09ba4dcd5509c8085bf88c665dcc51cbdfced27b"
+    },
+    {
+      "path": "assets/fonts/Poppins-ThinItalic.ttf",
+      "sha1": "fb8fccca21550e71135f92bbaf8a2e8a12c90465"
+    },
+    {
+      "path": "assets/videos/airbag_hold_vid.mov",
+      "sha1": "ce4c858acfa7c66ebaa6944bc2c9d6514116c157"
+    },
+    {
+      "path": "assets/videos/eeh_ooh_aah_vid.mov",
+      "sha1": "434f852cd1fc458601c660a1d53b18a337937571"
+    },
+    {
+      "path": "assets/videos/myo_tongue_tug_of_war_vid.mov",
+      "sha1": "9dc76b0001c6ce891d84361f88e0f7e184a28dea"
+    },
+    {
+      "path": "assets/videos/myo_tongue_wrestle_vid.mov",
+      "sha1": "058c79c152b5107b0e563b270ce013dfc3182b6f"
+    },
+    {
+      "path": "assets/videos/push_the_back_up_vid.mov",
+      "sha1": "e792346880c1cffffea35e37a42236ad38d563db"
+    },
+    {
+      "path": "assets/videos/suck_back_with_the_sides_vid.mov",
+      "sha1": "eb93d83ad63d78dc16ce1f2d39532f9f0cb81d0f"
+    },
+    {
+      "path": "assets/videos/suck_it_up_now_vid.mov",
+      "sha1": "ce1e5746bb2c18ed870b211cc2611fc26063fadd"
+    },
+    {
+      "path": "assets/videos/tiger_yell_vid.mov",
+      "sha1": "a342ddf8359be9ad6d1e84fcd03657e25ebe0008"
+    },
+    {
+      "path": "assets/videos/windshield_wiper_vid.mov",
+      "sha1": "e29c613c92643b724cfc451aab16cfd2db2dead0"
+    }
+  ]
+}

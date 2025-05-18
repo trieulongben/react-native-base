@@ -1,0 +1,28 @@
+{
+  "expo": {
+    "name": "System Health App",
+    "displayName": "System Health App",
+    "icon": "./assets/images/logo.png",
+    "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#232323",
+          "image": "./assets/images/logo.png",
+          "dark": {
+            "image": "./assets/images/logo.png",
+            "backgroundColor": "#000000"
+          },
+          "imageWidth": 200
+        }
+      ],
+      "expo-font"
+    ],
+    "android": {
+      "package": "com.gs25.systemhealthapp"
+    },
+    "ios": {
+      "bundleIdentifier": "com.gs25.systemhealthapp"
+    }
+  }
+}

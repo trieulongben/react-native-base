@@ -1,0 +1,36 @@
+const COLORS = {
+  primary: 'rgba(88, 178, 111, 1)',
+  primaryLight: '#B6CAFF',
+  onPrimary: '#FFFFFF',
+  onSuccess: '#FFFFFF',
+
+  background: 'rgba(28, 32, 51, 1)',
+  surface: 'rgba(50, 54, 73, 1)',
+  onSurface: '#FFFFFF',
+  onBackground: '#FFFFFF',
+  outline: '#DBE2F8',
+  disable: '#AFB3BE',
+  surfaceVariant: 'rgba(39,43,62,1)',
+  onSurfaceVariant: '#FFFFFF',
+  surfaceDark: 'rgba(28, 32, 51, 1)',
+  onSurfaceDark: '#FFFFFF',
+  divider: 'rgba(32, 32, 32, 0.2)',
+  iconGrey: '#ACACAC',
+  card: 'rgb(241,241,241)',
+  outlineDark: 'rgba(28, 32, 51, 1)',
+  description: '#979797',
+  checkboxText: '#49454F',
+  success: '#2EC201',
+  error: '#FF0000',
+  warning: '#FFA500',
+  cardDark: '#F2F2F2',
+  link: '#416FE4',
+  textDark: '#070B17',
+  textDescription: '#262626',
+  backButton: '#E2E7F7',
+
+  commandLine: 'black',
+  commandText: 'white',
+};
+
+export default COLORS;

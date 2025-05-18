@@ -1,0 +1,89 @@
+name: Android Build
+
+on:
+  workflow_call:
+    inputs:
+      version:
+        required: true
+        type: string
+        description: "app version"
+      build:
+        required: true
+        type: string
+        description: "build number"
+        default: 1
+      build_offset:
+        required: false
+        type: string
+        description: "build offset"
+        default: 0
+    secrets:
+      ANDROID_KEYSTORE_BASE64:
+        required: true
+      ANDROID_KEYSTORE_PASSWORD:
+        required: true
+      ANDROID_KEY_ALIAS:
+        required: true
+      ANDROID_KEY_PASSWORD:
+        required: true
+
+jobs:
+  android-build:
+    runs-on: self-hosted
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v4
+
+      - name: List Android Directory Contents
+        working-directory: android
+        run: |
+          ls -la
+
+      - name: Print the app version to action summary
+        run: echo "${{ inputs.version }}" >> $GITHUB_STEP_SUMMARY
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile --network-timeout 300000
+
+      - name: Write PR Info to JSON
+        run: |
+          echo "{\"pr_number\": \"${{ github.event.number }}\", \"pr_title\": \"${{ github.event.pull_request.title }}\"}" > pr-info.json
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: "zulu"
+          java-version: "17"
+          cache: gradle
+
+      - name: Init Gradle
+        run: gradle init --overwrite
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x ./gradlew
+
+      - name: Bump App version
+        run: |
+          echo "Bumping app version"
+          sed -i '' "s/versionName \".*\"/versionName \"${{ inputs.version }}\"/g" android/app/build.gradle
+          sed -i '' "s/versionCode .*$/versionCode $(( ${{ inputs.build }} + ${{ inputs.build_offset }} ))/g" android/app/build.gradle
+
+      - name: Build with Gradle
+        run: ./gradlew build
+
+      - name: Build Signed Bundle
+        run: |
+          echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 --decode > android/app/key.jks
+          cd android && ./gradlew bundleRelease -Pandroid.injected.signing.store.file=${GITHUB_WORKSPACE}/android/app/key.jks -Pandroid.injected.signing.store.password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }} -Pandroid.injected.signing.key.alias=${{ secrets.ANDROID_KEY_ALIAS }} -Pandroid.injected.signing.key.password=${{ secrets.ANDROID_KEY_PASSWORD }}
+
+      - name: Upload Bundle file
+        uses: actions/upload-artifact@v4
+        with:
+          name: BUNDLE
+          path: android/app/build/outputs/bundle/release/app-release.aab

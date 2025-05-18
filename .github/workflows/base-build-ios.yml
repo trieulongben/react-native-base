@@ -1,0 +1,108 @@
+name: iOS Build
+
+on:
+  workflow_call:
+    inputs:
+      version:
+        required: true
+        type: string
+        description: "app version"
+    secrets:
+      IOS_DISTRIBUTION_CERTIFICATE:
+        required: true
+      IOS_PROVISIONING_PROFILE:
+        required: true
+      IOS_CERTIFICATE_PASSWORD:
+        required: true
+      IOS_TEAM_ID:
+        required: true
+
+jobs:
+  ios-build:
+    runs-on: self-hosted
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v4
+
+      - name: List iOS Directory Contents
+        working-directory: ios
+        run: |
+          ls -la
+
+      - name: Print the app version to action summary
+        run: echo "${{ inputs.version }}" >> $GITHUB_STEP_SUMMARY
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --ignore-optional --frozen-lockfile --network-timeout 300000
+
+      - name: Write PR Info to JSON
+        run: |
+          echo "{\"pr_number\": \"${{ github.event.number }}\", \"pr_title\": \"${{ github.event.pull_request.title }}\"}" > pr-info.json
+
+      - name: Setup Ruby (bundle)
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+          bundler-cache: true
+
+      - name: Install Ccache
+        uses: hendrikmuhs/ccache-action@v1.2
+        with:
+          max-size: 1G
+          key: ${{ runner.os }}
+
+      - name: Restore Pods cache
+        uses: actions/cache@v4
+        timeout-minutes: 2
+        continue-on-error: true
+        with:
+          path: |
+            ios/Pods
+            ~/Library/Caches/CocoaPods
+            ~/.cocoapods
+          key: ${{ runner.os }}-pods-${{ hashFiles('ios/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pods-
+
+      - name: Install Pods
+        working-directory: ios
+        run: pod install --repo-update
+
+      - uses: yanamura/ios-bump-version@v1
+        with:
+          version: ${{ inputs.version }}
+          project-path: ios
+          build-number: ${{ github.run_id }}
+
+      - name: Build IOS App
+        uses: yukiarrr/ios-build-action@v1.11.0
+        env:
+          CCACHE_SLOPPINESS: clang_index_store,file_stat_matches,include_file_ctime,include_file_mtime,ivfsoverlay,pch_defines,modules,system_header
+          CCACHE_FILECLONE: true
+          CCACHE_DEPEND: true
+          CCACHE_INODECACHE: true
+          PATH: "/usr/lib/ccache:/usr/local/opt/ccache/libexec:${{ env.PATH }}"
+        with:
+          project-path: ios/DebloatApp.xcodeproj
+          p12-base64: ${{ secrets.IOS_DISTRIBUTION_CERTIFICATE }}
+          mobileprovision-base64: |
+            ${{ secrets.IOS_PROVISIONING_PROFILE }}
+          code-signing-identity: "iPhone Distribution"
+          team-id: ${{ secrets.IOS_TEAM_ID }}
+          certificate-password: ${{ secrets.IOS_CERTIFICATE_PASSWORD }}
+          workspace-path: ios/DebloatApp.xcworkspace
+          scheme: DebloatApp
+          export-options: ios/export-options.plist
+          custom-keychain-name: ios-build-${{ github.repository_id }}.keychain
+
+      - name: Upload IPA file
+        uses: actions/upload-artifact@v4
+        with:
+          name: build
+          path: output.ipa
