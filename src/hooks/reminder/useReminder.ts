@@ -1,33 +1,33 @@
-import {getStorageData, setStorageData, TStorageKey} from '@utils/storage';
-import {useState} from 'react';
+import { getStorageData, setStorageData, TStorageKey } from "@utils/storage";
+import { useState } from "react";
 import notifee, {
   RepeatFrequency,
   TimestampTrigger,
   TriggerType,
-} from '@notifee/react-native';
+} from "@notifee/react-native";
 
 export enum EReminderKey {
-  MORNING = 'morningReminder',
-  NIGHT = 'nightReminder',
+  MORNING = "morningReminder",
+  NIGHT = "nightReminder",
 }
 export type TReminderEnableKey = Extract<
   TStorageKey,
-  'morningReminder' | 'nightReminder'
+  "morningReminder" | "nightReminder"
 >;
 export type TReminderTimeKey = Extract<
   TStorageKey,
-  'morningReminderTime' | 'nightReminderTime'
+  "morningReminderTime" | "nightReminderTime"
 >;
 
-const REMINDER_CHANNEL_ID = 'reminder-channel-id';
+const REMINDER_CHANNEL_ID = "reminder-channel-id";
 
 const useNotification = () => {
   const requestPermission = async () => {
     await notifee.requestPermission();
   };
 
-  const morningTitle = 'Your core workout is today🔥';
-  const morningText = 'Exercise now for healthier and quieter sleep!';
+  const morningTitle = "Your core workout is today🔥";
+  const morningText = "Exercise now for healthier and quieter sleep!";
 
   const morningPayload = {
     title: morningTitle,
@@ -35,7 +35,7 @@ const useNotification = () => {
   };
 
   const nightTitle = "Making sure you're staying strong!";
-  const nightText = 'Keep up the momentum to keep improving your sleep';
+  const nightText = "Keep up the momentum to keep improving your sleep";
 
   const nightPayload = {
     title: nightTitle,
@@ -45,13 +45,13 @@ const useNotification = () => {
   const createNotificationChannel = async () => {
     await notifee.createChannel({
       id: REMINDER_CHANNEL_ID,
-      name: 'Reminder',
+      name: "Reminder",
     });
   };
 
   const createNotification = async (date: Date, isMorning: boolean) => {
     const payload = isMorning ? morningPayload : nightPayload;
-    const id = isMorning ? 'morning-reminder' : 'night-reminder';
+    const id = isMorning ? "morning-reminder" : "night-reminder";
     // Create a time-based trigger
     const trigger: TimestampTrigger = {
       type: TriggerType.TIMESTAMP,
@@ -69,18 +69,18 @@ const useNotification = () => {
           channelId: REMINDER_CHANNEL_ID,
         },
       },
-      trigger,
+      trigger
     );
   };
 
   const modifyNotification = async (date: Date, isMorning: boolean) => {
-    const id = isMorning ? 'morning-reminder' : 'night-reminder';
+    const id = isMorning ? "morning-reminder" : "night-reminder";
     await notifee.cancelTriggerNotification(id);
     await createNotification(date, isMorning);
   };
 
   const cancelNotification = async (isMorning: boolean) => {
-    const id = isMorning ? 'morning-reminder' : 'night-reminder';
+    const id = isMorning ? "morning-reminder" : "night-reminder";
     await notifee.cancelTriggerNotification(id);
   };
 
@@ -105,23 +105,23 @@ const useReminder = () => {
   const stringToDate = (str: string) => {
     return new Date(str);
   };
-  const initialMorningReminder = getStorageData('morningReminder') ?? false;
-  const initialNightReminder = getStorageData('nightReminder') ?? false;
+  const initialMorningReminder = getStorageData("morningReminder") ?? false;
+  const initialNightReminder = getStorageData("nightReminder") ?? false;
   const initialMorningReminderTime = stringToDate(
-    getStorageData('morningReminderTime') ?? new Date().toISOString(),
+    getStorageData("morningReminderTime") ?? new Date().toISOString()
   );
   const initialNightReminderTime = stringToDate(
-    getStorageData('nightReminderTime') ?? new Date().toISOString(),
+    getStorageData("nightReminderTime") ?? new Date().toISOString()
   );
   const [morningReminder, setMorningReminder] = useState(
-    initialMorningReminder,
+    initialMorningReminder
   );
   const [morningReminderTime, setMorningReminderTime] = useState<Date>(
-    initialMorningReminderTime,
+    initialMorningReminderTime
   );
   const [nightReminder, setNightReminder] = useState(initialNightReminder);
   const [nightReminderTime, setNightReminderTime] = useState<Date>(
-    initialNightReminderTime,
+    initialNightReminderTime
   );
 
   const dateToString = (date: Date) => {
@@ -130,12 +130,12 @@ const useReminder = () => {
 
   const _handleToggleReminder = async (
     state: boolean,
-    key: TReminderEnableKey,
+    key: TReminderEnableKey
   ) => {
     await createNotificationChannel();
     await requestPermission();
 
-    const isMorning = key === 'morningReminder';
+    const isMorning = key === "morningReminder";
     const reminderTime = isMorning ? morningReminderTime : nightReminderTime;
 
     const setReminder = isMorning ? setMorningReminder : setNightReminder;
@@ -151,7 +151,7 @@ const useReminder = () => {
   };
 
   const _handleSelectTime = (date: Date, key: TReminderTimeKey) => {
-    const isMorning = key === 'morningReminderTime';
+    const isMorning = key === "morningReminderTime";
     const setReminderTime = isMorning
       ? setMorningReminderTime
       : setNightReminderTime;

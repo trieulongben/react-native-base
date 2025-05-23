@@ -1,35 +1,31 @@
-import {TRootStackParamList, TScreenItem} from '@hooks/app/useAppNavigation';
+import { TRootStackParamList, TScreenItem } from "@hooks/app/useAppNavigation";
 
-import BottomTabs from '@navigation/bottomTabs/BottomTabs';
-
-import AuthenticationStack from '@navigation/stacks/authenticationStack/AuthenticationStack';
-import OnboardingStack from '@navigation/stacks/onboardingStack/OnboardingStack';
-import ExerciseDetailScreen from '@navigation/bottomTabs/screens/exercise-detail/ExerciseDetailScreen';
+import OnboardingStack from "@navigation/stacks/onboardingStack/OnboardingStack";
 export const ROOT_STACK: TScreenItem<TRootStackParamList>[] = [
   {
     key: 0,
-    name: 'OnboardingStack',
+    name: "OnboardingStack",
     component: OnboardingStack,
-    options: {headerShown: false},
+    options: { headerShown: false },
   },
 
-  {
-    key: 1,
-    name: 'AuthenticationStack',
-    component: AuthenticationStack,
-    options: {headerShown: false},
-  },
+  // {
+  //   key: 1,
+  //   name: "AuthenticationStack",
+  //   component: AuthenticationStack,
+  //   options: { headerShown: false },
+  // },
 
-  {
-    key: 2,
-    name: 'BottomTab',
-    component: BottomTabs,
-    options: {headerShown: false},
-  },
-  {
-    key: 3,
-    name: 'ExerciseDetailScreen',
-    component: ExerciseDetailScreen,
-    options: {headerShown: false},
-  },
+  // {
+  //   key: 2,
+  //   name: "BottomTab",
+  //   component: BottomTabs,
+  //   options: { headerShown: false },
+  // },
+  // {
+  //   key: 3,
+  //   name: 'ExerciseDetailScreen',
+  //   component: ExerciseDetailScreen,
+  //   options: {headerShown: false},
+  // },
 ];
