@@ -1,4 +1,3 @@
-import SettingScreen from './SettingScreen';
-import ReminderScreen from './ReminderScreen';
+import SettingScreen from "./SettingScreen";
 
-export {SettingScreen, ReminderScreen};
+export { SettingScreen };

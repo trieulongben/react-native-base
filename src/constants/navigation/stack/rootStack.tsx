@@ -22,10 +22,5 @@ export const ROOT_STACK: TScreenItem<TRootStackParamList>[] = [
   //   component: BottomTabs,
   //   options: { headerShown: false },
   // },
-  // {
-  //   key: 3,
-  //   name: 'ExerciseDetailScreen',
-  //   component: ExerciseDetailScreen,
-  //   options: {headerShown: false},
-  // },
+
 ];

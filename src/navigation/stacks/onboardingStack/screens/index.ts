@@ -1,11 +1,5 @@
-import IntroScreen from './IntroScreen';
-import SplashScreen from './SplashScreen';
-import OnboardingEducationScreen from './onboarding-education/OnboardingEducationScreen';
-import OnboardingSurveyScreen from './onboarding-survey/OnboardingSurveyScreen';
+import IntroScreen from "./IntroScreen";
+import SplashScreen from "./SplashScreen";
+import OnboardingEducationScreen from "./onboarding-education/OnboardingEducationScreen";
 
-export {
-  IntroScreen,
-  SplashScreen,
-  OnboardingSurveyScreen,
-  OnboardingEducationScreen,
-};
+export { IntroScreen, SplashScreen, OnboardingEducationScreen };

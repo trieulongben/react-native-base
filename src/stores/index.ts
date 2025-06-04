@@ -1,19 +1,14 @@
-import {configureStore} from '@reduxjs/toolkit';
-import {persistStore} from 'redux-persist';
+import { configureStore } from "@reduxjs/toolkit";
+import { persistStore } from "redux-persist";
 
-import appReducer from './slices/appSlice';
-import programReducer from './slices/programSlice';
-import commandReducer from './slices/commandSlice';
+import appReducer from "./slices/appSlice";
+
 export const store = configureStore({
-  reducer: {
-    app: appReducer,
-    userProgram: programReducer,
-    command: commandReducer,
-  },
-  middleware: getDefaultMiddleware =>
+  reducer: {},
+  middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: ['persist/PERSIST'],
+        ignoredActions: ["persist/PERSIST"],
       },
     }),
 });

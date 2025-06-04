@@ -1,10 +1,10 @@
-import {useAppNavigation} from '@hooks/app/useAppNavigation';
+import { useAppNavigation } from "@hooks/app/useAppNavigation";
 
-import {useEffect} from 'react';
+import { useEffect } from "react";
 
 interface ISplashScreenProps {}
 const SplashScreen = ({}: ISplashScreenProps) => {
-  const {navigate} = useAppNavigation();
+  const { navigate } = useAppNavigation();
   useEffect(() => {
     // handle logic when opening the app
     // navigate('IntroScreen');

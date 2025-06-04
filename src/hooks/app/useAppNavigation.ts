@@ -1,42 +1,28 @@
-import {ECheckListExercise} from '@constants/checklist/checklist';
 import {
   NavigatorScreenParams,
   RouteProp,
   useNavigation,
   useRoute,
-} from '@react-navigation/native';
+} from "@react-navigation/native";
 import {
   NativeStackNavigationOptions,
   NativeStackNavigationProp,
-} from '@react-navigation/native-stack';
+} from "@react-navigation/native-stack";
 
-import React from 'react';
+import React from "react";
 
 export type TOnboardingParamsList = {
-  WelcomeScreen: undefined;
-  ShoppingScreen: undefined;
-  OnboardingSurveyScreen: undefined;
-  OnboardingEducationScreen: {
-    isFromSetting?: boolean;
-  };
+  OnboardingEducationScreen: undefined;
 };
 
 export type TAuthenticationParamsList = {
   SignInScreen: undefined;
-  EmailVerificationScreen: {email: string; password: string};
+  EmailVerificationScreen: { email: string; password: string };
 };
 
 export type TAccountParamsList = {
   AccountScreen: undefined;
   EditAccountScreen: undefined;
-};
-
-export type TInvestParamsList = {
-  InvestDetailScreen: {investId: string};
-  SignUpScreen: undefined;
-  EmailSubscriptionScreen: undefined;
-  SearchScreen: undefined;
-  FundedListScreen: undefined;
 };
 
 export type TBottomTabParamsList = {
@@ -54,8 +40,6 @@ export type TRootStackParamList = {
   OnboardingStack: NavigatorScreenParams<TOnboardingParamsList>;
   BottomTab: NavigatorScreenParams<TBottomTabParamsList>;
   SettingStack: NavigatorScreenParams<TSettingParamsList>;
-  CheckListDetailScreen: {id: ECheckListExercise};
-  ExerciseDetailScreen: {id: string};
   AuthenticationStack: NavigatorScreenParams<TAuthenticationParamsList>;
 };
 
@@ -81,7 +65,7 @@ export const useAppNavigation = () => {
 };
 
 export const useAppRoute = <RouteName extends keyof AppStackParamsList>(
-  name: RouteName,
+  name: RouteName
 ) => {
   return useRoute<RouteProp<AppStackParamsList, typeof name>>();
 };
