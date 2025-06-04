@@ -72,3 +72,13 @@ yarn-error.log
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# Expo
+.expo
+
+# Android
+android/
+
+# iOS
+ios/
+
